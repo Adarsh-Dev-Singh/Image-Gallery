@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../Style/CommonGal.css';
 import { useParams } from 'react-router-dom';
 
@@ -17,23 +17,18 @@ function Insidecards({ data }) {
 }
 
 function InsideCard({ byplaceImage }) {
-  const [isEnlarged, setIsEnlarged] = useState(false);
+ 
+
+  
+
   const cardBgImage = {
     backgroundImage: `url(${byplaceImage.dataImage})`
   };
 
-  const handleDoubleClick = () => {
-    setIsEnlarged(!isEnlarged);
-  };
-
   return (
-    <div className={`card-wrap ${isEnlarged ? 'enlarged' : ''}`} style={{ zIndex: isEnlarged ? 1 : 'auto' }} onDoubleClick={handleDoubleClick}>
-      <div className={`card ${isEnlarged ? 'enlarged' : ''}`}>
-        <div className="card-bg" style={{ ...cardBgImage }}></div>
-        {isEnlarged && <img src={byplaceImage.dataImage} alt={byplaceImage.content} />}
-        <div className="card-info">
-          <p>{byplaceImage.content}</p>
-        </div>
+    <div className="card-wrap">
+      <div className="card">
+        <div className="card-bg" style={{...cardBgImage }}></div>
       </div>
     </div>
   );
